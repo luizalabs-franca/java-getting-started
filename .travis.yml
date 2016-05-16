@@ -12,7 +12,7 @@ after_deploy: source ./scripts/push-version.sh
 deploy:
   provider: releases
   skip_cleanup: true
-  file: java-getting-started-$BUILD_VERSION.tar.gz
+  file: target/*.jar
   on:
     tags: false
     all_branches: true
