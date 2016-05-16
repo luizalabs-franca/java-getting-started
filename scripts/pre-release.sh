@@ -8,23 +8,13 @@ then
       git config --global user.name "Travis CI"
 
       # Release a prerelease version
-      if ( [[ $TRAVIS_BRANCH = $PRE_RELEASE_BRANCH ]] );
-      then
-        mvn release:prepare
-      fi
+	  #if ( [[ $TRAVIS_BRANCH = $PRE_RELEASE_BRANCH ]] );
+	  #then
+        #mvn deploy
+	  #fi
       # Release a version
       if ( [[ $TRAVIS_BRANCH = $RELEASE_BRANCH ]] );
       then
-        mvn release:prepare
+        mvn -B release:prepare
       fi
-
-      # Get updated build version
-      BUILD_VERSION=$(node -pe 'JSON.parse(process.argv[1]).version' "$(cat $TRAVIS_BUILD_DIR/package.json)")
-
-      # Build
-      grunt build
-      tar -zcvf nodejs-getting-started-$BUILD_VERSION.tar.gz dist
-
-      export BUILD_VERSION
-
 fi
