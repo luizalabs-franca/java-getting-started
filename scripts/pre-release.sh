@@ -15,6 +15,6 @@ then
       # Release a version
       if ( [[ $TRAVIS_BRANCH = $RELEASE_BRANCH ]] );
       then
-        mvn release:prepare
+        mvn -B release:prepare
       fi
 fi
